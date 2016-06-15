@@ -10,10 +10,10 @@ class ListNode(object):
         self.data=val
         self.next=None
     
-    def get_data(self):
+    def val(self):
         return self.data
     
-    def get_next(self):
+    def next(self):
         return self.next
     
     def set_data(self,val):
