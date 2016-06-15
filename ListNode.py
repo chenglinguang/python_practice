@@ -7,18 +7,22 @@ __author__='Cheng Linguang'
 class ListNode(object):
 
     def __init__(self,val):
-        self.data=val
-        self.next=None
+        self._data=val
+        self._next=None
     
+    @property 
     def val(self):
-        return self.data
+        return self._data
     
+    @property
     def next(self):
-        return self.next
-    
-    def set_data(self,val):
-        self.data=val
+        return self._next
 
-    def set_next(self,val)
+    @val.setter
+    def val(self,val):
+        self._data=val
+
+    @next.setter
+    def next(self,val)
         self.next=val
         
