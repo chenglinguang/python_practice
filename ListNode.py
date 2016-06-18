@@ -4,6 +4,8 @@
 
 __author__='Cheng Linguang'
 
+#listNode simple definition 
+
 class ListNode(object):
 
     def __init__(self,val):
