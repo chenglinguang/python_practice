@@ -11,6 +11,8 @@ def getHTML(url):
 
 class MyHTMLParser(HTMLParser):
     def __init__(self):
+        #super( test, self).__init__()
+        #首先找到test的父类（比如为类A），然后把类test的对象self转换为父类A的对象，然后被转换的类A对象调用自己的__init__函数
         super(MyHTMLParser,self).__init__()
         self._events={}
         self._counter=0 #用于记录条目数量
