@@ -31,3 +31,44 @@ cursor.execute('select * from user where name=? and pwd=?', ('abc', 'password'))
 如何才能确保出错的情况下也关闭掉Connection对象和Cursor对象呢？请回忆try:...except:...finally:...的用法。
 
 
+
+Python中assert用来判断语句的真假，如果为假的话将触发AssertionError错误
+如：
+>>> a = 23
+>>> a
+23
+>>> assert a == 23
+>>> a -=1
+>>> a
+22
+>>> assert a == 23
+Traceback (most recent call last):
+  File "", line 1, in
+    assert a == 23
+AssertionError
+>>>
+
+
+
+
+ssert len(unique_characters) <= 10, 'Too many letters'
+Traceback (most recent call last):
+  File "<pyshell#35>", line 1, in <module>
+    assert len(unique_characters) <= 10, 'Too many letters'
+NameError: name 'unique_characters' is not defined
+>>> 
+
+抛出异常并提供描述信息
+
+
+
+等价于
+
+
+
+if len(unique_characters) > 10:
+    raise AssertionError('Too many letters')
+
+
+
+
