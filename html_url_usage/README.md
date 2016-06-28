@@ -74,7 +74,7 @@ application(environ, start_response):
 上面的application()函数就是符合WSGI标准的一个HTTP处理函数，它接收两个参数：
  
 1.environ：一个包含所有HTTP请求信息的dict对象；
-2.start_response：一个发送HTTP响应的函数。
+2.start_response：一个发送HTTP响应的函数。start_response 是一个参数，是wsgi服务器传进来的，这个参数是一个函数.
 
 在application()函数中，调用：
 start_response('200 OK', [('Content-Type', 'text/html')])
@@ -85,6 +85,20 @@ start_response('200 OK', [('Content-Type', 'text/html')])
 有了WSGI，我们关心的就是如何从environ这个dict对象拿到HTTP请求信息，然后构造HTML，通过start_response()发送Header，最后返回Body。
 application()函数必须由WSGI服务器来调用。有很多符合WSGI规范的服务器，我们可以挑选一个来用。但是现在，我们只想尽快测试一下我们编写的application()函数真的可以把HTML输出到浏览器，所以，要赶紧找一个最简单的WSGI服务器，把我们的Web应用程序跑起来。
 Python内置了一个WSGI服务器，这个模块叫wsgiref,它是用纯Python编写的WSGI服务器的参考实现。所谓“参考实现”是指该实现完全符合WSGI标准，但是不考虑任何运行效率，仅供开发和测试使用。
+
+
+http://www.liaoxuefeng.com/files/attachments/001400339839622665127663fb840b5870864895b103c2f000
+传说中的MVC：Model-View-Controller，中文名“模型-视图-控制器”。
+Python处理URL的函数就是C：Controller，Controller负责业务逻辑，比如检查用户名是否存在，取出用户信息等等；
+
+包含变量{{ name }}的模板就是V：View，View负责显示逻辑，通过简单地替换一些变量，View最终输出的就是用户看到的HTML。
+
+MVC中的Model在哪？Model是用来传给View的，这样View在替换变量的时候，就可以从Model中取出相应的数据。
+
+上面的例子中，Model就是一个dict：
+
+{ 'name': 'Michael' }
+只是因为Python支持关键字参数，很多Web框架允许传入关键字参数，然后，在框架内部组装出一个dict作为Model。
 
 
 
