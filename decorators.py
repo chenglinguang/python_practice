@@ -18,6 +18,7 @@ def log(text):
         @functools.wraps(func):
         def wrapper(*args,**kw):
             print '%s %s():' % (text,func.__name)
+            return func(*args,**kw)
         return wrapper
     return decorator
 
